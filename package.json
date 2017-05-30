@@ -1,0 +1,13 @@
+{
+  "name": "serverless-wsgi-export-env",
+  "description": "Serverless WSGI export env plugin",
+  "author": "phil-hachey",
+  "dependencies": {
+    "bluebird": "^3.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phil-hachey/serverless-wsgi-export-env.git"
+  },
+  "version": "1.1.1"
+}

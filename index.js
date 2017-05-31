@@ -1,12 +1,10 @@
 "use strict";
 
-const ExportEnv = require('serverless-export-env');
 const BbPromise = require("bluebird");
 const _ = require("lodash");
 
 class ExportEnvWsgi {
 	constructor(serverless, options) {
-		this.exportEnv = new ExportEnv(serverless, options);
 		this.serverless = serverless;
 		this.hooks = {
 			"before:wsgi:serve:serve": this.initEnv.bind(this)

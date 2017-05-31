@@ -3,7 +3,8 @@
   "description": "Serverless WSGI export env plugin",
   "author": "phil-hachey",
   "dependencies": {
-    "bluebird": "^3.0.6"
+    "bluebird": "^3.0.6",
+    "lodash": "^4.17.4"
   },
   "repository": {
     "type": "git",

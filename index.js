@@ -2,6 +2,7 @@
 
 const ExportEnv = require('serverless-export-env');
 const BbPromise = require("bluebird");
+const _ = require("lodash");
 
 class ExportEnvWsgi {
 	constructor(serverless, options) {
@@ -13,10 +14,21 @@ class ExportEnvWsgi {
 	}
 
 	initEnv() {
-		return this.exportEnv.initOfflineHook()
-			.then(this.exportEnv.collectEnvVars.bind(this.exportEnv))
-			.then(this.exportEnv.resolveEnvVars.bind(this.exportEnv))
-			.then(this.exportEnv.applyEnvVars.bind(this.exportEnv));
+		const AWS = this.serverless.providers.aws;
+
+		return AWS.request("CloudFormation", "describeStacks", {
+			StackName: AWS.naming.getStackName()
+		})
+		.then((response) => {
+			const stack = response.Stacks[0];
+
+			_.each(this.serverless.service.provider.environment, (value, key) => {
+				const output = _.find(stack.Outputs, {'OutputKey': key})
+				if(output) {
+					this.serverless.service.provider.environment[output.OutputKey] = output.OutputValue;
+				}
+			});
+		});
 	}
 }
 

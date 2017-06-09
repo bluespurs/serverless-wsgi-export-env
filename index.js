@@ -1,6 +1,5 @@
-"use strict";
+'use strict';
 
-const BbPromise = require("bluebird");
 const _ = require("lodash");
 
 class ExportEnvWsgi {
@@ -21,7 +20,7 @@ class ExportEnvWsgi {
 			const stack = response.Stacks[0];
 
 			_.each(this.serverless.service.provider.environment, (value, key) => {
-				const output = _.find(stack.Outputs, {'OutputKey': key})
+				const output = _.find(stack.Outputs, {'OutputKey': key});
 				if(output) {
 					this.serverless.service.provider.environment[output.OutputKey] = output.OutputValue;
 				}

@@ -3,12 +3,12 @@
   "description": "Serverless WSGI export env plugin",
   "author": "phil-hachey",
   "dependencies": {
-    "bluebird": "^3.0.6",
-    "lodash": "^4.17.4"
+    "bluebird": "~3.0.6",
+    "lodash": "~4.17.4"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phil-hachey/serverless-wsgi-export-env.git"
+    "url": "git+https://github.com/bluespurs/serverless-wsgi-export-env.git"
   },
   "version": "0.1.1"
 }
